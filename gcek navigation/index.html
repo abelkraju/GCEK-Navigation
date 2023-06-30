@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>GCEK NAVIGATION SYSTEM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    /* CSS for centering the contents of #qrcode */
+    #qrcode {
+      margin: 20px auto;
+      width: 150px;
+      height: 150px;
+      text-align: center;
+    }
+
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* CSS for the search bar */
+    /* input[type=text] {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid grey;
+        border-radius: 5px;
+        width: 50%;
+      } */
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      margin-top: 4rem;
+      padding: 20px 40px;
+      background-color: #f4f4f4;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 4rem;
+      color: #333;
+      word-spacing: 0.3rem;
+    }
+
+    label {
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      /* margin-bottom: 20px; */
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      /* width: 75%; */
+    }
+
+    button {
+      /* padding: 10px 20px; */
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      /* width: 75%; */
+      padding: 0;
+      /* align-self: baseline; */
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 65% 30%;
+      column-gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    body {
+      background: linear-gradient(135deg, #b7e9af, #a2d98f);
+      height: 90vh;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 style="text-align: center;">GCEK Navigation System</h1>
+    <p>Destination:</p>
+    <div class="grid">
+      <input type="text" id="destination" placeholder="Enter your destination...">
+      <button onclick="generateQRCode()">Generate QR Code</button>
+    </div>
+    <div id="qrcode"></div>
+  </div>
+
+  <!-- Script for generating QR code -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    function generateQRCode() {
+      var destination = document.getElementById('destination').value;
+      var qrCodeData = "Destination: " + destination;
+      var qrCodeUrl = "https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=" + encodeURIComponent(qrCodeData);
+      document.getElementById('qrcode').innerHTML = '<img src="' + qrCodeUrl + '"/>';
+    }
+  </script>
+</body>
+
+</html>
